@@ -1,8 +1,5 @@
-require "asciidoctor/indir_ext/version"
+require_relative 'indir_ext/extension'
 
-module Asciidoctor
-  module IndirExt
-    class Error < StandardError; end
-    # Your code goes here...
-  end
+Asciidoctor::Extensions.register do
+  include_processor Asciidoctor::IndirExt::IndirIncludeProcessor
 end
