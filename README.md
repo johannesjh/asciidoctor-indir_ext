@@ -1,12 +1,11 @@
 # Asciidoctor::IndirExt
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/asciidoctor/indir_ext`. To experiment with that code, run `bin/console` for an interactive prompt.
+An Asciidoctor extension that adds a variable `indir`, which always points to the directory of the currently included asciidoc file.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Add this line to your application's Gemfile:
+If using bundler, add this line to your application's Gemfile:
 
 ```ruby
 gem 'asciidoctor-indir_ext'
@@ -14,15 +13,40 @@ gem 'asciidoctor-indir_ext'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+
+If you do not wish to use bundler, install as:
 
     $ gem install asciidoctor-indir_ext
 
+
 ## Usage
 
-TODO: Write usage instructions here
+1. In the beginning of a subdocument, add this line:
+`ifndef::indir[:indir: .]`
+
+2. Include images like this:
+`image::{indir}/images/example.svg[]`
+
+3. When compiling a master document (that includes other subdocuments), require this extension.
+
+To compile your document, require the extension when running asciidoctor:
+
+```bash
+bundle exec asciidoctor -r asciidoctor-indir_ext myfile.adoc
+```
+
+
+...or without bundler:
+
+```bash
+asciidoctor -r asciidoctor-indir_ext myfile.adoc
+```
+
+As a result, the extension will provide an `indir` variable, which always points at the directory of the included asciidoc file, to that the an image path like `{indir}/images/example.svg` is resolved relative to the included subdocument.
+
+
 
 ## Development
 
@@ -35,7 +59,8 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/asciidoctor-indir_ext.
+Bug reports and pull requests are welcome on GitHub at https://github.com/johannesjh/asciidoctor-indir_ext.
+
 
 ## License
 
