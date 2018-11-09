@@ -31,20 +31,20 @@ If you do not wish to use bundler, install as:
 
 3. When compiling a master document (that includes other subdocuments), require this extension.
 
-To compile your document, require the extension when running asciidoctor:
+For example:
 
 ```bash
-bundle exec asciidoctor -r asciidoctor-indir_ext myfile.adoc
+bundle exec asciidoctor -r asciidoctor-indir_ext master.adoc
 ```
 
 
 ...or without bundler:
 
 ```bash
-asciidoctor -r asciidoctor-indir_ext myfile.adoc
+asciidoctor -r asciidoctor-indir_ext master.adoc
 ```
 
-As a result, the extension will provide an `indir` variable, which always points at the directory of the included asciidoc file, to that the an image path like `{indir}/images/example.svg` is resolved relative to the included subdocument.
+As a result, the extension provides an `indir` variable, which always points at the directory of the included asciidoc file. This allows image paths like `{indir}/images/example.svg` to be resolved relative to the included subdocument.
 
 
 
