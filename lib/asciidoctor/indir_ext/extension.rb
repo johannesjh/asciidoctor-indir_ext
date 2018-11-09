@@ -1,3 +1,5 @@
+require 'asciidoctor/include_ext/include_processor'
+
 module Asciidoctor
   module IndirExt
     ##
