@@ -53,7 +53,6 @@ module Asciidoctor
       def process(document, reader, target, attributes)
         @tmp[:document] = document
         @tmp[:reader] = reader
-        @tmp[:target] = target
         super
       end
 
@@ -65,8 +64,8 @@ module Asciidoctor
         if content.is_a? String then content = content.lines end
 
         # Set variables at the beginning of the included content
-        included_docfile = @tmp[:target]
-        included_docdir = ::File.dirname @tmp[:target]
+        included_docfile = filename
+        included_docdir = ::File.dirname filename
         content.unshift ''
         content.unshift %(:indir: #{included_docdir})
 
@@ -75,6 +74,7 @@ module Asciidoctor
         parent_docdir = ::File.dirname parent_docfile
         content << ''
         content << %(:indir: #{parent_docdir})
+
         return content
       end
     end
