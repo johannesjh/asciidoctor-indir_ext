@@ -41,25 +41,39 @@ module Asciidoctor
     # (because it does not overwrite the "handles?" method of its parent class, which always return true).
     # In consequence, it is difficult to use this extension together with other include processor extensions.
     # A better solution with finer-grained control could be based on https://github.com/jirutka/asciidoctor-include-ext.
-    class IndirIncludeProcessor < Asciidoctor::Extensions::IncludeProcessor
-      def process doc, reader, target, attributes
-        content = (open target).readlines
+    class IndirIncludeProcessor < Asciidoctor::IncludeExt::IncludeProcessor
+      def initialize(*args, &block)
+        # temporary storage helper that won't be frozen by Asciidoctor
+        @tmp = { }
+        super
+      end
 
-        # Set variables at beginning of the included content
-        included_docfile = target
-        included_docdir = ::File.dirname target
+      def process(document, reader, target, attributes)
+        @tmp[:document] = document
+        @tmp[:reader] = reader
+        @tmp[:target] = target
+        super
+      end
+
+      def read_lines(filename, selector)
+        # read content using functionality from super
+        content = super(filename, selector)
+
+        # split content into a list of lines if it has been provided as string
+        if content.is_a? String then content = content.lines end
+
+        # Set variables at the beginning of the included content
+        included_docfile = @tmp[:target]
+        included_docdir = ::File.dirname @tmp[:target]
         content.unshift ''
         content.unshift %(:indir: #{included_docdir})
 
         # Reset the variables at the end of the included content
-        parent_docfile = doc.reader.include_stack&.dig(-1, 1) || (doc.attr 'docfile')
+        parent_docfile = @tmp[:reader].include_stack&.dig(-1, 1) || (@tmp[:document].attr 'docfile')
         parent_docdir = ::File.dirname parent_docfile
         content << ''
         content << %(:indir: #{parent_docdir})
-
-        # Push included content for further processing
-        reader.push_include content, target, target, 1, attributes
-        reader
+        return content
       end
     end
   end
