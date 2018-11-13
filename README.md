@@ -2,6 +2,8 @@
 
 An Asciidoctor extension that adds a variable `indir`, which always points to the directory of the currently included asciidoc file.
 
+This extension solves the problem that standard asciidoctor allows [no relative paths in subdocuments](https://github.com/asciidoctor/asciidoctor/issues/650), see  [asciidoctor issue #650](https://github.com/asciidoctor/asciidoctor/issues/650).
+
 
 ## Installation
 
@@ -60,6 +62,14 @@ As a result, the extension provides an `indir` variable, which always points at 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/johannesjh/asciidoctor-indir_ext.
+
+
+
+## Credits
+
+This extension is based on another asciidoctor extension called [jirutka/asciidoctor-include-ext](https://github.com/jirutka/asciidoctor-include-ext), which provides a cleaner implementation of asciidoctor's include processing, and thus makes it easier to overwrite according behavior through an extension.
+
+Special thanks goes to [@mojavelinux](https://github.com/mojavelinux) for pointing out this solution in [asciidoctor issue #650](https://github.com/asciidoctor/asciidoctor/issues/650) and for providing valuable feedback.
 
 
 ## License
