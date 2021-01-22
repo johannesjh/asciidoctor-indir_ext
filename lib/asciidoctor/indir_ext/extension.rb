@@ -21,6 +21,9 @@ module Asciidoctor
         # read content using functionality from super
         content = super(filename, selector)
 
+        # Ignore non-asciidoc files
+        if not ['.asciidoc', '.adoc', '.ad', '.asc', '.txt'].include? File.extname(filename) then return content end
+
         # split content into a list of lines if it has been provided as string
         if content.is_a? String then content = content.lines end
 
