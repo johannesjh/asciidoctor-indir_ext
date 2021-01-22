@@ -1,0 +1,13 @@
+# docker-compose file for local development
+version: "3.3"
+services:
+  dev:
+    image: ruby:2.7
+    environment:
+      SSH_AUTH_SOCK: $SSH_AUTH_SOCK
+    volumes:
+      - .:/app:rw
+      - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
+    working_dir: /app
+    stdin_open: true
+    tty: true

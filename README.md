@@ -52,11 +52,15 @@ As a result, the extension provides an `indir` variable, which always points at 
 
 ## Development
 
-* After checking out the repo, run `bundle install` to install dependencies.
-* To list all available rake tasks, run `bundle exec rake -T`.
-* To build a gem package on your local machine, run `bundle exec rake build`.
-* To install this gem onto your local machine, run `bundle exec rake install`.
-* To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+It is possible to start a docker container using `docker-compose run --rm dev bash`.
+This allows to run the following commands inside the docker container
+and thus avoids messing with the local system setup.
+
+* Run `bundle install` to install dependencies
+* To list all available rake tasks, run `bundle exec rake -T`
+* To build a gem package on your local machine, run `bundle exec rake build`
+* To install this gem onto your local machine, run `bundle exec rake install`
+* To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org)
 
 
 ## Contributing
