@@ -8,7 +8,7 @@ module Asciidoctor
       def initialize(*args, &block)
         # temporary storage helper that won't be frozen by Asciidoctor
         @tmp = { }
-        super
+        super()
       end
 
       def process(document, reader, target, attributes)
