@@ -5,6 +5,13 @@ An Asciidoctor extension that adds a variable `indir`, which always points to th
 This extension solves the problem that standard asciidoctor allows [no relative paths in subdocuments](https://github.com/asciidoctor/asciidoctor/issues/650), see  [asciidoctor issue #650](https://github.com/asciidoctor/asciidoctor/issues/650).
 
 
+## Status and Maintenance
+
+Maintainers wanted. 
+
+This asciidoctor extension has served me well, but I currently don't use it anymore, and I have not updated it for a while.
+
+
 ## Installation
 
 If using bundler, add this line to your application's Gemfile:
