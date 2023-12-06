@@ -25,11 +25,11 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'asciidoctor', '>= 1.5.6', '< 3.0.0'
-  spec.add_runtime_dependency 'concurrent-ruby', '~> 1.1.3'
+  spec.add_runtime_dependency 'asciidoctor', '>= 2.0.20', '< 3.0.0'
+  spec.add_runtime_dependency 'concurrent-ruby', '~> 1.2.2'
   spec.add_runtime_dependency 'asciidoctor-include-ext', '~> 0.4.0'
 
-  spec.add_development_dependency 'asciidoctor-pdf', '~> 1.5.0.alpha.16' # to build a pdf of the example folder
+  spec.add_development_dependency 'asciidoctor-pdf', '~> 2.3' # to build a pdf of the example folder
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
