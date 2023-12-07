@@ -1,15 +1,21 @@
 # Asciidoctor::IndirExt
 
-An Asciidoctor extension that adds a variable `indir`, which always points to the directory of the currently included asciidoc file.
-
-This extension solves the problem that standard asciidoctor allows [no relative paths in subdocuments](https://github.com/asciidoctor/asciidoctor/issues/650), see  [asciidoctor issue #650](https://github.com/asciidoctor/asciidoctor/issues/650).
 
 
 ## Status and Maintenance
 
-Maintainers wanted. 
+This is unmaintained software. Don't use it. Feel free to fork. I am not actively working on this anymore.
 
-This asciidoctor extension has served me well, but I currently don't use it anymore, and I have not updated it for a while.
+This asciidoctor extension has served its purpose of demonstrating the need and providing a temporary solution, but I currently don't use it anymore, and I have not updated it for a while. As of December 2023, it is not compatible with current versions of Asciidoctor anymore, compare [pull request 4](https://github.com/johannesjh/asciidoctor-indir_ext/pull/4) in this repository.
+
+In my opinion, the ability to include subdocuments (and to use relative paths for including images etc in these subdocuments) should be implemented at the level of Asciidoctor (the compiler) and Asciidoc (the language). Corresponding tickets exist, see e.g., [issue 650](https://github.com/asciidoctor/asciidoctor/issues/650). Unfortunately, the feature has not landed for years. I have grewn increasingly frustrated about it. A language extension (such as this repo here) can only be seen as a temporary workaround. An official language or compiler feature is needed so that everybody can rely on it in the long term, without the need to install extensions, without worries that other extensions may not be compatible with it etc.
+
+
+## About
+
+An Asciidoctor extension that adds a variable `indir`, which always points to the directory of the currently included asciidoc file.
+
+This extension solves the problem that standard asciidoctor allows [no relative paths in subdocuments](https://github.com/asciidoctor/asciidoctor/issues/650), see  [asciidoctor issue #650](https://github.com/asciidoctor/asciidoctor/issues/650).
 
 
 ## Installation
